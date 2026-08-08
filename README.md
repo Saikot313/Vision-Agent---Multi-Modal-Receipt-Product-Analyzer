@@ -87,7 +87,7 @@ in the image.
 
 ![Landing view](screenshots/gif.gif)
 
- [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)]()
+ [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://saikot313.github.io/Vision-Agent---Multi-Modal-Receipt-Product-Analyzer/)
 
 
 ---
