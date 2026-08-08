@@ -87,6 +87,7 @@ in the image.
 
 ![Landing view](screenshots/gif.gif)
 
+ [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)]()
 
 
 ---
