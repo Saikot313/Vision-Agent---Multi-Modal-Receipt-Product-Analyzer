@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Agent · Multi-Modal Receipt &amp; Product Analyzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Tool-Using LLM Agent · OCR + Object Detection</div>
+    <h1>Vision Agent</h1>
+    <p class="hero-desc">Upload a receipt or a product photo. The agent decides for itself which tools to run - OCR, line-item parsing, price verification, or object detection — and shows its reasoning trace.</p>
+  </header>
+
+  <section class="card">
+    <p class="card-title"><span class="num">01</span> Upload Image</p>
+    <label class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="image/jpeg,image/png,image/jpg">
+      <div class="dz-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+      </div>
+      <div class="dz-label">Drop a receipt or product photo, or click to browse</div>
+      <div class="dz-sub">JPG or PNG</div>
+    </label>
+
+    <div class="preview-row" id="previewRow" style="display:none;">
+      <div class="preview-frame" id="previewFrame">
+        <img id="previewImg" alt="Uploaded preview">
+        <div class="scanline" id="scanline"></div>
+      </div>
+      <div class="preview-meta">
+        <div class="file-chip" id="fileChip"></div>
+        <button class="primary" id="analyzeBtn">Analyze Image</button>
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="results" id="results">
+
+    <section class="card">
+      <p class="card-title"><span class="num">02</span> Summary</p>
+      <div class="badge-row">
+        <span class="badge" id="typeBadge">—</span>
+        <div class="badge-list" id="objectBadges"></div>
+      </div>
+      <p class="summary-text" id="summaryText"></p>
+    </section>
+
+    <section class="card" id="priceCard" style="display:none;">
+      <p class="card-title"><span class="num">03</span> Price Check</p>
+      <div class="price-grid">
+        <div class="price-stat">
+          <div class="price-label">Computed Total</div>
+          <div class="price-value" id="computedTotal">–</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-label">Printed Total</div>
+          <div class="price-value" id="printedTotal">–</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-label">Mismatch?</div>
+          <div class="price-value" id="mismatchValue">–</div>
+        </div>
+      </div>
+      <p class="price-note" id="priceNote"></p>
+    </section>
+
+    <section class="card" id="itemsCard" style="display:none;">
+      <p class="card-title"><span class="num">04</span> Line Items</p>
+      <table class="items-table">
+        <thead>
+          <tr><th>Item</th><th>Qty</th><th>Unit Price</th><th>Total</th></tr>
+        </thead>
+        <tbody id="itemsBody"></tbody>
+      </table>
+    </section>
+
+    <section class="card" id="ocrCard" style="display:none;">
+      <p class="card-title"><span class="num">05</span> Raw OCR Text</p>
+      <pre class="ocr-text" id="ocrText"></pre>
+    </section>
+
+    <section class="card">
+      <button class="trace-toggle" id="traceToggle">
+        <span>Agent Trace <span class="trace-count" id="traceCount"></span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="traceChevron"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="trace-list" id="traceList" style="display:none;"></div>
+    </section>
+
+  </section>
+
+  
+</div>
+<footer>Made by Md.Sakender Saikot</footer>
+<script src="/static/script.js"></script>
+</body>
+</html>
